@@ -5,8 +5,6 @@ import argparse
 import time
 import pygeoip
   
-
-
 gi = pygeoip.GeoIP('geo/GeoLiteCity.dat')
 
 
@@ -49,7 +47,7 @@ def traceroute(host):
               
         if address != socket.gethostbyname(host): 
             rec = gi.record_by_name(address) 
-            if rec != None:
+            if rec:   
                 city = rec['city']
                 country = rec['country_name']
             else:
