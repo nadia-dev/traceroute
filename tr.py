@@ -1,13 +1,16 @@
 #!/usr/bin/python
-
+import poetry
 import socket
 import argparse
 import time
 import pygeoip
+import random
   
 gi = pygeoip.GeoIP('geo/GeoLiteCity.dat')
 
+my_quatren = poetry.numerated_quatrens[random.choice(range(len(poetry.numerated_quatrens)))]
 
+    
 def main():
       
     parser = argparse.ArgumentParser(description='traceroute')
@@ -54,8 +57,13 @@ def traceroute(host):
                 city = 'unknown city'
                 country = 'unknown country'          
             print ttl, address, city, country, roundtrips
+            
         elif address == socket.gethostbyname(host): 
             print str(ttl) + ' Arrived to ' + host 
+            print ''
+            for line in my_quatren:
+                print line
+            print ''
             break
             
         listen.close()
